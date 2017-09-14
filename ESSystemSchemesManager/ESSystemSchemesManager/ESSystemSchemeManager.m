@@ -127,6 +127,23 @@
             scheme = @"Wallpaper";
             break;
     }
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10) {
+        NSURL *url = [NSURL URLWithString:@"App-Prefs:root=Bluetooth"];
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+        }
+    }else {
+        NSURL *url = [NSURL URLWithString:@"prefs:root=Bluetooth"];
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+            [[UIApplication sharedApplication] openURL:url];
+#pragma GCC diagnostic pop
+        }
+    }
+    
+    
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"App-Prefs:root=%@",scheme]]];
 }
 
