@@ -98,6 +98,13 @@ typedef NS_ENUM(NSInteger, ESSystemSchemeType) {
 + (void)openSystemScheme:(ESSystemSchemeType)type;
 
 /**
+ 打开Safari
+
+ @param url 连接地址
+ */
++ (void)openSafari:(NSURL *)url;
+
+/**
  拨打电话
 
  @param telephone 电话号码

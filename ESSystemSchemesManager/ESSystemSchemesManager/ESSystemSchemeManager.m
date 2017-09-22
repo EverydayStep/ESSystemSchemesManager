@@ -142,9 +142,14 @@
 #pragma GCC diagnostic pop
         }
     }
-    
-    
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"App-Prefs:root=%@",scheme]]];
+}
+
++ (void)openSafari:(NSURL *)url {
+    if (url == nil) {
+        return;
+    }
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 + (void)callTelephone:(NSString *)telephone  inView:(UIView *)view{
