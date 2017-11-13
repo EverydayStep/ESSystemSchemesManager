@@ -142,14 +142,14 @@
 #pragma GCC diagnostic pop
         }
     }
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"App-Prefs:root=%@",scheme]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"App-Prefs:root=%@",scheme]] options:@{} completionHandler:nil];
 }
 
 + (void)openSafari:(NSURL *)url {
     if (url == nil) {
         return;
     }
-    [[UIApplication sharedApplication] openURL:url];
+    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
 }
 
 + (void)callTelephone:(NSString *)telephone  inView:(UIView *)view{
@@ -163,7 +163,7 @@
 }
 
 + (void)sendMessageToTelephone:(NSString *)telephone {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://%@",telephone]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://%@",telephone]] options:@{} completionHandler:nil];
 }
 
 + (void)sendMessageToTelephones:(NSArray<NSString *> *)telephones title:(NSString *)title message:(NSString *)message viewController:(UIViewController *)viewController delegate:(id)delegate{
@@ -181,7 +181,7 @@
 }
 
 + (void)sendMailToEmail:(NSString *)email {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mailto://%@",email]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mailto://%@",email]] options:@{} completionHandler:nil];
 }
 
 + (void)sendMailToEmail:(NSArray<NSString *> *)emails ccRecipients:(NSArray<NSString *> *)ccRecipients subject:(NSString *)subject message:(NSString *)message viewController:(UIViewController *)viewController delegate:(id<MFMailComposeViewControllerDelegate>)delegate {
